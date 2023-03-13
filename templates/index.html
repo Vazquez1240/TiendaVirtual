@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--  Boots Trap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/slate/bootstrap.min.css" integrity="sha384-8iuq0iaMHpnH2vSyvZMSIqQuUnQA7QM+f6srIdlgBrTSEyd//AWNMyEaSF2yPzNQ" crossorigin="anonymous">
+    <!--Meta de pagina de login-->
+     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <!-- El link al css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='inicio.css') }}">
+    <!--Linkiamos el google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Ubuntu" rel="stylesheet">
+    <title>Iniciar sesion</title>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class=flashes>
+            {% for message in messages %}
+                <!--<li>{{ message }}</li>-->
+                <div id="alerta" class="alert alert-dismissible alert-danger">
+                    <a href="/"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16"><path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/></svg></a>
+                    <strong>{{ message }}</strong>
+                </div>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <hgroup>
+        <h1>Bienvenido al sistema</h1>
+        <h3>Iniciar sesion</h3>
+    </hgroup>
+    <form action="/logeo" method="post">
+        <div class="group">
+            <input name="username" type="text" placeholder="Usuario"><span class="highlight"></span><span class="bar"></span>
+        </div>
+        <div class="group">
+            <input name="password" type="password"placeholder="Contraseña"><span class="highlight"></span><span class="bar"></span>
+        </div>
+        <button type="submit" class="button buttonBlue">Iniciar Sesion
+            <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+        </button>
+    </form>
+
+
+</body>
+</html>

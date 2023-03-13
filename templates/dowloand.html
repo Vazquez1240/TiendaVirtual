@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='dowloand.css') }}">
+    <title>Descargar</title>
+</head>
+<body>
+  <!--<h2 titulo="">Download</h2>-->
+  <!--<p><a href="/download">Download</a></p>-->
+    <div class="descargar" style="text-align: center;">
+        <h1>DESCARGAR FACTURA</h1>
+        <ul class='btn'>
+            <span id="wrap"><a class="btn" href="/download">Descargar</a></span>
+            <span id="wrap2"><a href="/aniadir-product/{{user}}" class="btn">No descargar</a></span>
+        </ul>
+    </div>
+</body>
+</html>

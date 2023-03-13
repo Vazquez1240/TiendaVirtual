@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Boostrap CDN Lumen -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/lumen/bootstrap.min.css" integrity="sha384-GzaBcW6yPIfhF+6VpKMjxbTx6tvR/yRd/yJub90CqoIn2Tz4rRXlSpTFYMKHCifX" crossorigin="anonymous">
+    <!-- Boostrap Normal -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='view_product.css') }}">
+    <title>Añadir Nuevo Producto</title>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class=flashes>
+                {% for message in messages %}
+                <!--<li>{{ message }}</li>-->
+                    <div id="alerta" class="alert alert-dismissible alert-primary">
+                        <a href="/aniadir-product/{{datos.username_proveedor}}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16"><path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/></svg></a>
+                        <strong>{{ message }}</strong>
+                    </div>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <div id="tabla" class="col-md-7">
+        <table class="table table-striped table-hover table-bordered table-sm bg-white">
+                <thead>
+                    <tr>
+                        <td>ID</td>
+                        <td>Producto</td>
+                        <td>Precio por Pedido</td>
+                        <td>Stock</td>
+                        <td>Existencias</td>
+                        <td>Empresa</td>
+                        <td>Acciones</td>
+                        <td><a href="/logeo"  class="btn btn-secondary">Regresar</a></td>
+                        <td><a href="/add-product/{{datos.id_proveedor}}" class="btn btn-success">Nuevo Producto</a></td>
+                    </tr>
+                </thead>
+                <thead>
+                    {% for info in producto %}
+                        <tr>
+                            <td>{{ info.id_producto }}</td>
+                            <td>{{ info.nombre_producto }}</td>
+                            <td>{{ info.precio_pedido }}</td>
+                            <td>{{ info.stock_producto }}</td>
+                            <td>{{ info.existencias_producto }}</td>
+                            <td>{{ info.empresa }}</td>
+                            <td>
+                                <a href="/edit-product/{{info.id_producto}}/{{info.empresa}}" class="btn btn-secondary">Rellenar</a>
+                                <a href="/delete-product/{{info.id_producto}}" class="btn btn-danger">Borrar</a>
+                            </td>
+
+                        </tr>
+                    {% endfor %}
+                </thead>
+        </table>
+    </div>
+</body>
+</html>

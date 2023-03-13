@@ -1,0 +1,75 @@
+.header{
+    text-align: center;
+    height: 350px;
+    padding: 12px;
+    background: #457fca;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #5691c8, #457fca);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #5691c8, #457fca); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+}
+.header a{
+    display: inline-block;
+    width: 7px;
+    height: 8px;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+.header a:hover{
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
+
+}
+.avatar{
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+}
+.user-name{
+    font-size: 29px;
+    margin-top: 14px;
+    color: #fff;
+}
+.socials{
+    list-style: none;
+    text-align: center;
+    padding: 0;
+}
+.socials li{
+    display: inline-block;
+    margin: 5px;
+}
+a{
+    text-decoration: none;
+    color: #ad0000;
+}
+a:hover {
+    color: #dd1919;
+}
+.about{
+    text-align: center;
+    padding: 10px;
+}
+.about h3{
+    color: #545454;
+    font-size: 16px;
+}
+.about p{
+    color: #545454;
+    font-size: 14px;
+}
+#tabla{
+    margin-left: 310px;
+    margin-top: 17px;
+}
+#tabla2{
+    margin-left: 310px;
+    margin-top: 17px;
+}
+#tabla3{
+    margin-left: 310px;
+    width: 1100px;
+    margin-top: 17px;
+}

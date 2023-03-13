@@ -1,0 +1,6 @@
+SQLAlchemy~=1.4.41
+pandas~=1.5.0
+matplotlib~=3.6.0
+Flask~=2.2.2
+PyInvoice~=0.1.7
+Werkzeug~=2.2.2

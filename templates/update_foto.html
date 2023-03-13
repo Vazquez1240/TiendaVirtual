@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='update_foto.css') }}">
+    <title>Actualizar foto</title>
+</head>
+<body>
+        {% if rango == 'admin' %}
+            <!--<form action="/cambiar-foto/{{datos.id_admin}}/{{datos.rango_admin}}" method="post" enctype="multipart/form-data">
+                    <input type="file" name="update">
+                    <button type="submit">Actualizar</button>
+                </form>-->
+            <form action="/cambiar-foto/{{datos.id_admin}}/{{datos.rango_admin}}" method="post" enctype="multipart/form-data">
+                <label for="images" class="drop-container"><span class="drop-title">Suelte archivos aquí</span>or
+                    <input type="file" id="images" accept="image/*" name="update" required>
+                </label>
+                <button type="submit" class="btn_actualizar">Actualizar</button>
+            </form>
+
+        {% elif rango == 'personal' %}
+            <form action="/cambiar-foto/{{datos.id_personal}}/{{datos.rango_personal}}" method="post" enctype="multipart/form-data">
+                <input type="file" name="update">
+                <button type="submit">Actualizar</button>
+            </form>
+        {% elif rango == 'proveedor' %}
+            <label for="file-upload" class="subir">
+                <i class="fas fa-cloud-upload-alt"></i> Subir archivo
+            </label>
+            <form action="/cambiar-foto/{{datos.id_proveedor}}/{{datos.rango_proveedor}}" method="post" enctype="multipart/form-data">
+                <input name="update" id="file-upload" onchange='cambiar()' type="file" style='display: none;'/>
+                <div id="info"></div>
+                <input id="btn" type="submit" value="Actualizar">
+            </form>
+        {% endif %}
+
+
+</body>
+</html>

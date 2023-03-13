@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Iconos Boostrap CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" integrity="sha384-xeJqLiuOvjUBq3iGOjvSQSIlwrpqjSHXpduPd6rQpuiM3f5/ijby8pCsnbu5S81n" crossorigin="anonymous">
+    <!-- Iconos Boostrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <!-- Link del css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='perfil.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-sacale=1">
+    <title>Mi Perfil</title>
+</head>
+<body>
+    {% for datos in lista_datos: %}
+        {%if rol == "personal" %}
+            <div class="header">
+                <img class="avatar" src="/static/imagenes/{{datos.fotografia_personal}}">
+                <a href="/cambiar-foto/{{datos.id_personal}}/{{datos.rango_personal}}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16"><path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/></svg></a>
+                <!--<a href="#">Editar foto</a>-->
+                <h1 class="user-name">{{datos.nombre_personal}}</h1>
+            </div>
+            <div id="tabla3" class="col-md-7">
+                <table class="table table-striped table-hover table-bordered table-sm bg-white">
+                    <thead>
+                        <tr>
+                            <td>ID</td>
+                            <td>Nombre</td>
+                            <td>Apellidos</td>
+                            <td>Usuario</td>
+                            <td>Correo</td>
+                            <td>Ventas</td>
+                            <td>Telefono</td>
+                            <td>Acciones</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{datos.id_personal}}</td>
+                            <td>{{datos.nombre_personal}}</td>
+                            <td>{{datos.apellidos_personal}}</td>
+                            <td>{{datos.usuario_personal}}</td>
+                            <td>{{datos.correo_personal}}</td>
+                            <td>{{datos.ventas_personal}}</td>
+                            <td>{{datos.telefono_cliente}}</td>
+                            <td>
+                                <a href="/logeo" class="btn btn-secondary">regresar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        {% elif rol == "admin" %}
+             <div class="header">
+                <img class="avatar" src="/static/imagenes/{{datos.fotografia_admin}}">
+                 <a href="/cambiar-foto/{{datos.id_admin}}/{{datos.rango_admin}}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16"><path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/></svg></a>
+                <h1 class="user-name">{{datos.nombre_admin}}</h1>
+            </div>
+            <div id="tabla2" class="col-md-7">
+                <table class="table table-striped table-hover table-bordered table-sm bg-white">
+                    <thead>
+                        <tr>
+                            <td>ID</td>
+                            <td>Nombre</td>
+                            <td>Apellidos</td>
+                            <td>Correo</td>
+                            <td>Usuario</td>
+                            <td>Acciones</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{datos.id_admin}}</td>
+                            <td>{{datos.nombre_admin}}</td>
+                            <td>{{datos.apellidos_admin}}</td>
+                            <td>{{datos.correo_admin}}</td>
+                            <td>{{datos.username_admin}}</td>
+                            <td>
+                                <a href="/logeo" class="btn btn-secondary">regresar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        {% elif rol == "proveedor" %}
+             <div class="header">
+                <img class="avatar" src="/static/imagenes/{{datos.logo_proveedor}}">
+                 <a title="Editar Foto de Perfil" href="/cambiar-foto/{{datos.id_proveedor}}/{{datos.rango_proveedor}}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16"><path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/></svg></a>
+                <h1 class="user-name">{{datos.nombre_proveedor}}</h1>
+            </div>
+            <div id="tabla" class="col-md-7">
+                <table class="table table-striped table-hover table-bordered table-sm bg-white">
+                    <thead>
+                        <tr>
+                            <td>ID</td>
+                            <td>Empresa</td>
+                            <td>Telefono</td>
+                            <td>Correo</td>
+                            <td>Direccion</td>
+                            <td>Descuentos</td>
+                            <td>IVA</td>
+                            <td>Usuario</td>
+                            <td>Acciones</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{datos.id_proveedor}}</td>
+                            <td>{{datos.nombre_proveedor}}</td>
+                            <td>{{datos.telefono_proveedor}}</td>
+                            <td>{{datos.correo_proveedor}}</td>
+                            <td>{{datos.direccion_proveedor}}</td>
+                            <td>{{datos.descuento_proveedor}}</td>
+                            <td>{{datos.iva_proveedor}}</td>
+                            <td>{{datos.username_proveedor}}</td>
+                            <td>
+                                <a href="/logeo" class="btn btn-secondary">regresar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+    {% endfor %}
+</body>
+</html>

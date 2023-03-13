@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="logo jpg" href="{{url_for('static', filename='imagenes/logo.jpg')}}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for dato in archivo %}
+        <span>{{dato}}</span>
+    {% endfor %}
+</body>
+</html>
